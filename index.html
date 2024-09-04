@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יוצר קישורי ווטסאפ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ECE5DD;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #DCF8C6;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #25D366;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #25D366;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #128C7E;
+        }
+        #result {
+            margin-top: 20px;
+            word-break: break-all;
+        }
+        a {
+            color: #075E54;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>יוצר קישורי ווטסאפ</h1>
+        <input type="tel" id="phoneNumber" placeholder="הכנס מספר טלפון (כולל קידומת מדינה)">
+        <input type="text" id="linkText" placeholder="הכנס טקסט לקישור (אופציונלי)">
+        <button onclick="generateLink()">צור קישור</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function generateLink() {
+            const phoneNumber = document.getElementById('phoneNumber').value.replace(/\D/g, '');
+            const linkText = document.getElementById('linkText').value;
+            if (phoneNumber) {
+                const whatsappLink = `https://wa.me/${phoneNumber}`;
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = `
+                    <p>הקישור לצ'אט ווטסאפ שלך:</p>
+                    <a href="${whatsappLink}" target="_blank">${linkText || whatsappLink}</a>
+                `;
+            } else {
+                alert('אנא הכנס מספר טלפון תקין');
+            }
+        }
+    </script>
+</body>
+</html>
